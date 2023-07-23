@@ -14,11 +14,27 @@ client = MongoClient(MONGO_URI)
 # Function to get the database connection
 
 
-def get_database() -> Database:
-    return client[DATABASE_NAME]
+""" def get_database() -> Database:
+    return client[DATABASE_NAME] """
 
 # Function to get the news collection
 
 
 def get_news_collection() -> Collection:
     return client[DATABASE_NAME]["news"]
+
+
+def get_world_news_collection() -> Collection:
+    return client[DATABASE_NAME]["world"]
+
+
+def get_india_news_collection() -> Collection:
+    return client[DATABASE_NAME]["india"]
+
+
+def get_kerala_news_collection() -> Collection:
+    return client[DATABASE_NAME]["kerala"]
+
+
+def get_sports_news_collection() -> Collection:
+    return client[DATABASE_NAME]["sports"]

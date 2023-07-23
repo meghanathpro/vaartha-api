@@ -1,7 +1,10 @@
+# from scraping.scrapers.mbhumi_scraper import test_out
+from scraping.scrapers.anet_scraper import test_out
 from fastapi import APIRouter
 # Import the news endpoints
 from api.endpoints.news import router as news_router
 import logging
+
 
 app = APIRouter()
 app.include_router(news_router)
@@ -16,3 +19,13 @@ def read_root():
     logging.info("This is an Home info message.")
 
     return {"Hello": "World"}
+
+# TODO Remove the below code before deployment
+# Tests for the project happens here
+
+
+@app.get("/tests")
+def fn_tests():
+    logging.info("Test begin")
+    test_out()
+    return {"done"}
