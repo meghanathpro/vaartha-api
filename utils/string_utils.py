@@ -10,8 +10,21 @@ def extract_title_from_url(url):
 
     if match:
         # Extract the matched title and replace hyphens with spaces
-        title = match.group(1).replace('-', ' ')
-        return title
-    else:
-        # If no match is found, return None
-        return None
+        return match.group(1).replace('-', ' ')
+
+    # If no match is found, return None
+    return None
+
+
+def extract_title_from_aneturl(url):
+    # Define the regular expression pattern to match the title
+    pattern = r'.*/([^/]+)-[a-z]{3}-[a-z0-9]+$'
+
+    # Use re.search to find the match
+    match = re.search(pattern, url)
+
+    # If a match is found, extract and return the title
+    if match:
+        return match.group(1).replace('-', ' ')
+    # If no match is found, return None or raise an error, depending on your requirement
+    return None

@@ -1,4 +1,5 @@
-# from scraping.scrapers.mbhumi_scraper import test_out
+from scraping.scraper import scraper_main
+from scraping.scrapers.mbhumi_scraper import test_mbhumi
 from scraping.scrapers.anet_scraper import test_out
 from fastapi import APIRouter
 # Import the news endpoints
@@ -27,5 +28,7 @@ def read_root():
 @app.get("/tests")
 def fn_tests():
     logging.info("Test begin")
-    test_out()
+    # test_out()
+    # test_mbhumi()
+    scraper_main()
     return {"done"}
