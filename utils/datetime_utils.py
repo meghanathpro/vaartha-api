@@ -31,3 +31,17 @@ def convert_to_datetime_anet(input_str):
     output_str = dt_obj.strftime(output_format)
 
     return output_str, result
+
+
+def is_datetime_within_one_hour(datetime1, datetime2):
+    format_str = '%Y-%m-%d %H:%M'
+    dt1 = datetime.strptime(datetime1, format_str)
+    dt2 = datetime.strptime(datetime2, format_str)
+    time_difference = abs(dt1 - dt2)
+    if (time_difference <= timedelta(hours=1)):
+        if (dt1 < dt2):
+            return True, True
+        else:
+            return True, False
+    else:
+        return False, False

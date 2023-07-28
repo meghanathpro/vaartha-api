@@ -13,12 +13,12 @@ def extract_title_from_url(url):
         return match.group(1).replace('-', ' ')
 
     # If no match is found, return None
-    return None
+    return 'None'
 
 
 def extract_title_from_aneturl(url):
     # Define the regular expression pattern to match the title
-    pattern = r'.*/([^/]+)-[a-z]{3}-[a-z0-9]+$'
+    pattern = r'.*/([^/]+)-[a-z0-9]+$'
 
     # Use re.search to find the match
     match = re.search(pattern, url)
@@ -27,4 +27,4 @@ def extract_title_from_aneturl(url):
     if match:
         return match.group(1).replace('-', ' ')
     # If no match is found, return None or raise an error, depending on your requirement
-    return None
+    return 'None'
