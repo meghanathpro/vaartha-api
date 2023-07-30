@@ -45,3 +45,8 @@ def is_datetime_within_one_hour(datetime1, datetime2):
             return True, False
     else:
         return False, False
+
+
+def convert_to_datetime(date_str):
+    # Convert to '%Y-%m-%d %H:%M'datetime
+    return datetime.strptime(date_str, '%Y-%m-%d %H:%M')

@@ -36,11 +36,3 @@ def compare_fuzzy_similar_titles(similar_titles, threshold=55):
             })
     # Return the list of fuzzy similar titles
     return result
-
-
-# TODO: Add input dictionary (similar_titles) here
-similar_titles = []
-# Call the function to find fuzzy similar titles and store the results in 'fuzzy_similar_titles'
-fuzzy_similar_titles = compare_fuzzy_similar_titles(similar_titles)
-# Print the fuzzy similar titles
-print(fuzzy_similar_titles)

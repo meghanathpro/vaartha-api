@@ -18,15 +18,16 @@ def calculate_similarity(title1, title2):
 
 
 def find_similar_titles(dict1, dict2, threshold=0.80):
+
     # List to store similar titles
     similar_titles = []
     # Loop through the entries in dict1
     for entry1 in dict1:
-        title1 = entry1['title']
+        title1 = entry1['clean_title']
         datetime1 = entry1['datetime']
         # Loop through the entries in dict2
         for entry2 in dict2:
-            title2 = entry2['title']
+            title2 = entry2['clean_title']
             datetime2 = entry2['datetime']
             # Calculate the similarity between the titles using spaCy
             similarity = calculate_similarity(title1, title2)
@@ -41,11 +42,3 @@ def find_similar_titles(dict1, dict2, threshold=0.80):
                     'similarity': similarity
                 })
     return similar_titles
-
-
-# TODO: Provide input comparing dictionaries
-dict1 = []
-dict2 = []
-
-# Find similar titles and store the results in the 'similar_titles' list
-similar_titles = find_similar_titles(dict1, dict2)

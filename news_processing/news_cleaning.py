@@ -1,5 +1,22 @@
 # For cleaning and preprocessing news data.
-from utils.datetime_utils import is_datetime_within_one_hour
+import logging
+from nlp.nlp import nlp_main
+from utils.datetime_utils import convert_to_datetime, is_datetime_within_one_hour
+
+
+def news_clean_main(dict1, dict2):
+    data = dict1+dict2
+    input_list = nlp_main(dict1, dict2)
+    # Filter the list based on datetime difference
+    filtered_list = filter_by_datetime_difference(input_list)
+    # Use a set comprehension to get unique tuples of (key, value) pairs
+    unique_items = {tuple(item.items()) for item in filtered_list}
+
+    # Create a new list from the unique tuples
+    condition_list = [dict(item) for item in unique_items]
+    filtered_data = filter_data_with_condition(data, condition_list)
+    sorted_dict = sort_by_datetime(filtered_data)
+    return sorted_dict
 
 
 def filter_by_datetime_difference(input_list):
@@ -23,26 +40,12 @@ def filter_by_datetime_difference(input_list):
                     'source': 'asianetnews', 'clean_title': title2
 
                 })
+    logging.info(result_list)
 
     return result_list
 
 
-# Your List of dictionaries
-input_list = []
-
-# Filter the list based on datetime difference
-filtered_list = filter_by_datetime_difference(input_list)
-
 # Print the filtered list
-
-
-# Use a set comprehension to get unique tuples of (key, value) pairs
-unique_items = {tuple(item.items()) for item in filtered_list}
-
-# Create a new list from the unique tuples
-result_list = [dict(item) for item in unique_items]
-
-print(result_list)
 
 
 def filter_data_with_condition(data, condition_dict):
@@ -68,10 +71,10 @@ def filter_data_with_condition(data, condition_dict):
     return filtered_data
 
 
-condition_dict = []
+def sort_by_datetime(final_dict):
+    # Sort the list of dictionaries based on the 'datetime' key in descending order
 
-data = []
+    sorted_dict = sorted(final_dict, key=lambda x: convert_to_datetime(
+        x['datetime']), reverse=True)
 
-# Call the function and print the filtered data
-filtered_data = filter_data_with_condition(data, condition_dict)
-print(filtered_data)
+    return sorted_dict

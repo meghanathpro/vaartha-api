@@ -1,3 +1,4 @@
+from news_processing.news_storage import final_out
 from scraping.scraper import scraper_main
 from scraping.scrapers.mbhumi_scraper import test_mbhumi
 from scraping.scrapers.anet_scraper import test_out
@@ -30,5 +31,6 @@ def fn_tests():
     logging.info("Test begin")
     # test_out()
     # test_mbhumi()
-    scraper_main()
+    # scraper_main()
+    final_out()
     return {"done"}

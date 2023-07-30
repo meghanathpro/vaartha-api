@@ -10,6 +10,15 @@ class NewsArticleToDb(BaseModel):
     image_link: str
 
 
+class NewsArticleToCompare(BaseModel):
+    datetime: str
+    category: str
+    source: str
+    content: str
+    article_link: str
+    image_link: str
+
+
 class NewsArticleFromDb(BaseModel):
     id: str
     datetime: str
